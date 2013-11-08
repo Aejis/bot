@@ -2,13 +2,12 @@
 
 ## Most useful scripts
 
-**Remember**
+**Planning poker**
 
 ```
-hubot remember <key> - Returns a string
-hubot remember <key> is <value>. - Returns nothing. Remembers the text for next time!
-hubot what do you remember - Returns everything hubot remembers.
-hubot forget <key> - Removes key from hubots brain.
+hubot poker (play|start) - start the round
+hubot poker (estimate|bet|rank) <score> - estimate current task with score
+hubot poker (finish|end) - finish round and show the bets
 ```
 
 **Scrumnotes**
@@ -18,6 +17,15 @@ hubot take scrum notes - Starts taking notes from all users in the room (records
 hubot stop taking notes - Stops taking scrum notes (if a path is configured saves day notes to a json file)
 hubot scrum notes - shows scrum notes taken so far
 hubot are you taking notes? - hubot indicates if he's currently taking notes
+```
+
+**Remember**
+
+```
+hubot remember <key> - Returns a string
+hubot remember <key> is <value>. - Returns nothing. Remembers the text for next time!
+hubot what do you remember - Returns everything hubot remembers.
+hubot forget <key> - Removes key from hubots brain.
 ```
 
 **Tasks**
