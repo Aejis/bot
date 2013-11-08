@@ -35,7 +35,7 @@ module.exports = function(robot) {
 
     if (room) {
       if (allowedScores.indexOf(estimation) > -1) {
-        robot.brain.set('poker:scores:' + origin.user.id, estimation);
+        robot.brain.set('poker:scores:' + origin.user.id, estimation); // Hack: add a dedicated per-user key to avoid race overwrite
         robot.adapter.send(envelope, origin.user.name + ' has bet his estimation'); // Hack
 
         msg.send('Good! Thanks')
@@ -50,10 +50,10 @@ module.exports = function(robot) {
 
   robot.respond(/poc?ker (finish|end)/, function(msg) {
     var scores = [],
-        users = robot.brain.users();
+        users  = robot.brain.users();
 
-    for (var id in users) {
-      var key = 'poker:scores:' + id,
+    for (var id in users) { // Clean scores
+      var key   = 'poker:scores:' + id,
           score = robot.brain.get(key);
 
       if (score !== null) {
@@ -66,6 +66,6 @@ module.exports = function(robot) {
       msg.send(est);
     });
 
-    robot.brain.remove('poker');
+    robot.brain.remove('poker'); // Clean room jid
   });
 };
